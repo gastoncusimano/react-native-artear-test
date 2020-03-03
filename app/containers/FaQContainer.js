@@ -7,20 +7,28 @@ export default function FaQContainer() {
     const [state, setState] = useState({items: [], page: 1, limit: 10, isLoading: true})
     const initializedData = async () => {
         await Fetch.GET(`questions?page=${state.page}&limit=10`, (response) => response)
-              .then((response) => {
-                if (response) {
-                  const items = state.items
-                  response.forEach(item => {
-                    items.push(item)
-                  });
+              .then(
+                (response) => {
+                  if (response) {
+                    const items = state.items
+                    response.forEach(item => {
+                      items.push(item)
+                    });
+                    setState({ 
+                      ...state, 
+                      page: state.page += 1,
+                      items: items,
+                      isLoading: false
+                    })
+                }
+              }).catch((err) => {
                   setState({ 
                     ...state, 
-                    page: state.page += 1,
-                    items: items,
+                    items: undefined,
                     isLoading: false
                   })
                 }
-              })
+              )
     }
     useEffect(() => {
       initializedData()
@@ -53,9 +61,9 @@ export default function FaQContainer() {
   return (
     <View style={styles.container}>
         <View style={styles.headerBar}>
-        <Text style={styles.headerText}> Preguntas <Text style={{fontSize: 13}}>(Visualizando {state.items.length})</Text></Text>
+        <Text style={styles.headerText}> Preguntas <Text style={{fontSize: 13}}>(Visualizando {state.items?.length || 0})</Text></Text>
         </View>
-        {state.items &&
+        {state.items ?
             <FlatList
                 style={{marginBottom: 5}}
                 key="questions"
@@ -67,7 +75,10 @@ export default function FaQContainer() {
                 onEndReachedThreshold={.3}
                 ListFooterComponent={renderFooter}
                 refreshing={state.isLoading} />
-        }
+        : <View style={{height: '93%', alignItems: 'center', paddingVertical: 30}}>
+            <Text style={{color:'white', fontSize: 82, paddingVertical: 15}}>:(</Text>
+            <Text style={{color:'white', fontSize: 18}}>No hay data, algo salió mal.</Text>
+          </View>}
     </View>
   );
 }

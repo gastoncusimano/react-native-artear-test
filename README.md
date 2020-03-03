@@ -5,7 +5,8 @@
 
 ### Con el endpoint dado, listar las preguntas con su respuesta utilizando un infinite scroll.
 
-#### Link to apk: Soon (building atm)
+#### Link to apk: 
+##### https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40gastoncusimano/react-native-artear-4e955fedb7244ebba0fcc54acb7f9360-signed.apk
 
 nvm use stable
 

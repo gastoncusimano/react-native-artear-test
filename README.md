@@ -5,10 +5,11 @@
 
 ### Con el endpoint dado, listar las preguntas con su respuesta utilizando un infinite scroll.
 
+####Link to apk: Soon (building atm)
+
 nvm use stable
 
 npm i
 
 expo start.
 
-Link to apk: Soon (building atm)

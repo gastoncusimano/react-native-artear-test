@@ -11,6 +11,7 @@
 https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40gastoncusimano/react-native-artear-4e955fedb7244ebba0fcc54acb7f9360-signed.apk
 
 https://drive.google.com/file/d/1h3oJYK_dIRLywzGQDxNvgjyLECJmMfdJ/view
+
 nvm use stable
 
 npm i
